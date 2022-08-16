@@ -7,7 +7,7 @@ export const Modal = ({
   onClose,
   imgBig,
   modalID,
-  setComment,
+  isLoaded,
 }) => {
   const addComment = (event) => {
     event.preventDefault();
@@ -21,10 +21,12 @@ export const Modal = ({
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({comment: new_comment.value} ),  // не понял что передать в body, поэтому 400
+        body: JSON.stringify({ comment: new_comment.value }), // не понял что передать в body, поэтому 400
       }
     )
-      .then((response) => {response.json()})
+      .then((response) => {
+        response.json();
+      })
       .then((res) => {
         event.target.new_comment.value = "";
       })
@@ -36,23 +38,45 @@ export const Modal = ({
   return !isVisible ? null : (
     <div className="modal" onClick={onClose}>
       <div className="modal_dialog" onClick={(e) => e.stopPropagation()}>
-        <div className="modal_body">
-          <div className='modal_img'>
-          <img src={imgBig}></img></div>
-          {comment?(comment?.map((el) => (<div className="modal_comments" key={el.id}><div className="modal_comments_1">Комментарии:</div>
-            <div style={{'paddingLeft':'20px'}} >
-              <div style={{'color':'blue','fontWeight':'700','fontSize':'16px'}}> User {el.id}</div>
-              <div style={{'fontSize':'14px'}}>{el.text}</div>
-            </div></div>
-          ))):null}
-          
-          <div className="modal_form">
-          <form onSubmit={addComment}>
-            <textarea name="new_comment" placeholder="Add your comment" ></textarea>
-            <button>Add</button>
-          </form>
+        {!isLoaded ? (
+          <div className="load">Загрузка...</div>
+        ) : (
+          <div className="modal_body">
+            <div className="modal_img">
+              <img src={imgBig}></img>
+            </div>
+            {comment
+              ? comment?.map((el) => (
+                  <div className="modal_comments" key={el.id}>
+                    <div className="modal_comments_1">Комментарии:</div>
+                    <div style={{ paddingLeft: "20px" }}>
+                      <div
+                        style={{
+                          color: "blue",
+                          fontWeight: "700",
+                          fontSize: "16px",
+                        }}
+                      >
+                        {" "}
+                        User {el.id}
+                      </div>
+                      <div style={{ fontSize: "14px" }}>{el.text}</div>
+                    </div>
+                  </div>
+                ))
+              : null}
+
+            <div className="modal_form">
+              <form onSubmit={addComment}>
+                <textarea
+                  name="new_comment"
+                  placeholder="Add your comment"
+                ></textarea>
+                <button>Add</button>
+              </form>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

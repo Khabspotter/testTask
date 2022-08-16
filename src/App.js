@@ -9,6 +9,7 @@ function App() {
   const [comment, setComment] = useState(null);
   const [imgBig, setImgBig] = useState(null);
   const [modalID, setModalID] = useState(null);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     fetch("https://boiling-refuge-66454.herokuapp.com/images")
@@ -26,8 +27,12 @@ function App() {
         setImgBig(result.url);
         setComment(result.comments);
         setModalID(result.id);
+        setIsLoaded(true);
       })
-      .catch((err) => alert(err));
+      .catch((err) => {
+        alert(err);
+        setIsLoaded(true);
+      });
   };
 
   return (
@@ -35,14 +40,16 @@ function App() {
       <header>Тестовое задание от Галкина Владимира</header>
       <div className="elements">
         <div className="elements_images">
-          {image?.map((el) => (<div key={el.id}>
-            <Element
-              picture={el.url}
-              id={el.id}
-              setModal={setModal}
-              modalContent={modalContent}
-              comment={comment}
-            /></div>
+          {image?.map((el) => (
+            <div key={el.id}>
+              <Element
+                picture={el.url}
+                id={el.id}
+                setModal={setModal}
+                modalContent={modalContent}
+                comment={comment}
+              />
+            </div>
           ))}
         </div>
       </div>
@@ -58,6 +65,7 @@ function App() {
         comment={comment}
         modalID={modalID}
         setComment={setComment}
+        isLoaded={isLoaded}
       />
     </div>
   );

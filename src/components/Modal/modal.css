@@ -17,7 +17,7 @@
   .modal_dialog {
     width: 100%;
     max-width: 700px;
-    height: 700px;
+    height: auto;
     background: white;
     position: relative;
     margin: 0 20px;
@@ -51,7 +51,11 @@ padding: 20px;
     display:flex;
     justify-content: center;
   }
-
+.load{
+  font-size: larger;
+  color:red
+  
+}
 textarea {
 box-sizing: border-box;
 width: 600px;
@@ -90,6 +94,7 @@ font-size: 14px;
 line-height: 20px;
 color: #FFFFFF;
 cursor: pointer;
+margin-bottom: 10px;
 }
 button:hover{
   background-color: blue;
@@ -115,3 +120,34 @@ button:hover{
       opacity: 1;
     }
   }
+
+  @media (max-width: 1000px){
+    .modal_dialog {
+       max-width: 550px;}
+       textarea {
+        width: 500px;
+      }
+    
+}
+
+@media (max-width: 700px){
+  .modal_dialog {
+     max-width: 400px;
+  }
+  .modal_img img{
+    max-width: 320px;}
+  textarea {
+    width: 300px;
+  }
+}
+
+@media (max-width: 470px){
+  .modal_dialog {
+     max-width: 300px;
+  }
+  .modal_img img{
+    max-width: 280px;}
+  textarea {
+    width: 250px;
+  }
+}

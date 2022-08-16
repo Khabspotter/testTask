@@ -18,3 +18,9 @@
     height: 230px;
     position: relative;
 }
+
+@media (max-width: 330px){
+    .container_img {
+        width: 250px;
+    }
+}
