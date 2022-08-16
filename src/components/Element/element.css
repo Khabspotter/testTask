@@ -1,0 +1,20 @@
+.container_img {
+    width: 280px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.2s linear;
+    cursor: pointer;
+}
+
+.container_img:hover{
+    width: 300px;
+}
+
+.container {
+    width: 330px;
+    height: 230px;
+    position: relative;
+}

@@ -1,0 +1,117 @@
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.25);
+    animation-name: appear;
+    animation-duration: 500ms;
+  }
+  
+  .modal_dialog {
+    width: 100%;
+    max-width: 700px;
+    height: 700px;
+    background: white;
+    position: relative;
+    margin: 0 20px;
+    max-height: calc(100vh - 40px);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slide-in;
+    animation-duration: 0.5s;
+    border-radius: 5px;
+  }
+  
+  .modal_img {
+    display: flex;
+    justify-content: center;
+padding: 20px;
+  }
+
+
+  .modal_img img{
+    max-width: 500px;
+    border-radius: 24px;
+    box-shadow: 0px 25px 50px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .modal_form {
+    display:flex;
+    justify-content: center;
+  }
+
+textarea {
+box-sizing: border-box;
+width: 600px;
+height: 70px;
+background: #FFFFFF;
+border: 1px solid #D1D5DB;
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+border-radius: 6px;
+flex: none;
+order: 1;
+align-self: stretch;
+flex-grow: 1;
+font-size: 14px;
+
+}
+
+button {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 9px 17px;
+width: 67px;
+height: 38px;
+background: #4F46E5;
+box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+border-radius: 6px;
+flex: none;
+order: 2;
+flex-grow: 0;
+border: none;
+font-family: 'Inter';
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+color: #FFFFFF;
+cursor: pointer;
+}
+button:hover{
+  background-color: blue;
+}
+
+.modal_comments {
+  padding-left:20px;
+  padding-bottom: 10px;
+}
+
+.modal_comments_1 {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+  @keyframes appear {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
